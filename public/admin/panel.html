@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <script type="text/javascript" src="../jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../handlebars/dist/handlebars.min.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <div class="row">
+    <h1 class="text-center">Admin Panel</h1>
+  </div>
+  <!-- container for product creation form -->
+  <div class="container">
+    <div class="create-item">
+      <p class="create-title">Create Item</p>
+      <form class="form-horizontal item-form">
+        <div class="form-group">
+          <input type="text" class="form-control" id="product-name" placeholder="Product name"></input>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" id="product-price" placeholder="Product price"></input>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="product-img" placeholder="Img Url"></input>
+        </div>
+        <p class="error text-center" id="name-error"></p>
+        <button class="btn center-block submit-product">Submit</button>
+      </form> 
+    </div>
+  </div>
+  <br>
+  <!-- container for amazon search form -->
+  <div class="container">
+    <div class="search-item">
+      <p class="search-title">Search on Amazon</p>
+      <form class="form-horizontal search-form">
+        <div class="form-group">
+          <input type="text" class="form-control" id="product-name" placeholder="Product name"></input>
+        </div>
+        <button class="btn center-block search-product">Search</button>
+      </form> 
+    </div>
+  </div>
+  <!-- container for product list -->
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center">Product List</h2>
+    </div>
+    <div class="row">
+      <!-- list column -->
+      <div class="center-block col-md-6" id="listContainer">  
+        <button class="btn btn-primary center-block list-products">produce list</button>
+        <ul>
+        </ul>  
+      </div>
+      <!-- card display column -->
+      <div class="col-md-6" id="cardContainer">          
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- template for item card -->
+  <script id="item-card" type="text/x-handlebars-template">
+    <div class="card-container">
+      <div class="card item" item data-name="{{ name }}" data-price="{{ price }}">
+        <div class="pricebox">
+          <p class="price"> ${{price}} </p>
+        </div>
+        <div class="deletebox">
+          <i class="fa fa-trash-o fa-4x"></i>
+        </div>
+        <div class="card-inner">
+          <img src="{{url}}" class="proimage">
+        </div>
+      </div>
+    </div>
+  </script>
+
+
+  <script type="text/javascript" src="admin.js"></script>
+  <!-- <script type="text/javascript" src="amazon.js"></script> -->
+</body>
+</html>
