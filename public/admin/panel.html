@@ -8,47 +8,101 @@
   <script type="text/javascript" src="../jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../handlebars/dist/handlebars.min.js"></script>
-
+  <script type="text/javascript" src="../backbone/node_modules/underscore/underscore-min.js"></script>
+  <script type="text/javascript" src="../backbone/backbone-min.js"></script>
   <title></title>
 </head>
 <body>
   <div class="row">
     <h1 class="text-center">Admin Panel</h1>
   </div>
-  <!-- container for product creation form -->
-  <div class="container">
-    <div class="create-item">
-      <p class="create-title">Create Item</p>
-      <form class="form-horizontal item-form">
-        <div class="form-group">
-          <input type="text" class="form-control" id="product-name" placeholder="Product name"></input>
+
+
+
+  <!-- container for amazon product list -->
+  <div class="container resultList">
+    <div class="row">
+      <h2 class="text-center">Search On Amazon</h2>
+      <div>
+        <form class="form-horizontal">
+        <div class="form-group ">
+          <label for="SearchIndex" class="control-label col-sm-2 col-sm-offset-3">SearchIndex</label>
+          <div class="col-sm-5">
+            <select id="SearchIndex" class="form-control">
+              <option value="Appliances">Appliances</option>
+              <option value="ArtsAndCrafts">Arts and Crafts</option>
+              <option value="Automative">Automative</option>
+              <option value="Baby">Baby</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Blended">Blended</option>
+              <option value="Books">Books</option>
+              <option value="Collectibles">Collectibles</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Fashion">Fashion</option>
+              <option value="FashionBaby">Fashion - Baby</option>
+              <option value="FashionBoys">Fashion - Boys</option>
+              <option value="FashionGirls">Fashion - Girls</option>
+              <option value="FashionMen">Fashion - Men</option>
+              <option value="FashionWomen">Fashion - Women</option>
+              <option value="GiftCards">Gift Cards</option>
+              <option value="Grocery">Grocery</option>
+              <option value="HealthPersonalCare">Health and Personal Care</option>
+              <option value="HomeGarden">Home and Garden</option>
+              <option value="Industrial">Industrial</option>
+              <option value="KindleStore">Kindle Store</option>
+              <option value="LawnAndGarden">Lawn and Garden</option>
+              <option value="Luggage">Luggage</option>
+              <option value="MP3Downloads">MP3 Downloads</option>
+              <option value="Magazines">Magazines</option>
+              <option value="Merchants">Merchants</option>
+              <option value="MobileApps">Mobile Apps</option>
+              <option value="Movies">Movies</option>
+              <option value="Music">Music</option>
+              <option value="MusicalInstruments">Musical Instruments</option>
+              <option value="OfficeProducts">Office Products</option>
+              <option value="PCHardware">PC Hardware</option>
+              <option value="PetSupplies">Pet Supplies</option>
+              <option value="Software">Software</option>
+              <option value="SportingGoods">Sporting Goods</option>
+              <option value="Tools">Tools</option>
+              <option value="Toys">Toys</option>
+              <option value="UnBoxVideo">UnBox Video</option>
+              <option value="VideoGames">Video Games</option>
+              <option value="Wine">Wine</option>
+              <option value="Wireless">Wireless</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label for="KeyWord" class="control-label col-sm-2 col-sm-offset-3">KeyWord</label>
+          <div class="col-sm-5">
+            <input type="text" id="KeyWord" class="form-control">
+            </input>
+          </div>
         </div>
         <div class="form-group">
-          <input type="number" class="form-control" id="product-price" placeholder="Product price"></input>
+          <button id="search" class="btn btn-primary col-sm-offset-5">Search</button>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" id="product-img" placeholder="Img Url"></input>
-        </div>
-        <p class="error text-center" id="name-error"></p>
-        <button class="btn center-block submit-product">Submit</button>
-      </form> 
+      </form>
+      </div> 
+    </div>
+    <div class="row">
+      <h2 class="text-center">Search Results</h2>
+    </div>
+    <div class="row">
+      <!-- list column -->
+      <div class="center-block col-md-6" id="searchListContainer">  
+        <ul>
+        </ul>  
+      </div>
+      <!-- card display column -->
+      <div class="col-md-6" id="searchCardContainer">          
+      </div>
     </div>
   </div>
-  <br>
-  <!-- container for amazon search form -->
-  <div class="container">
-    <div class="search-item">
-      <p class="search-title">Search on Amazon</p>
-      <form class="form-horizontal search-form">
-        <div class="form-group">
-          <input type="text" class="form-control" id="product-name" placeholder="Product name"></input>
-        </div>
-        <button class="btn center-block search-product">Search</button>
-      </form> 
-    </div>
-  </div>
+
   <!-- container for product list -->
-  <div class="container">
+  <div class="container list">
     <div class="row">
       <h2 class="text-center">Product List</h2>
     </div>
@@ -78,13 +132,22 @@
           <i class="fa fa-trash-o fa-4x"></i>
         </div>
         <div class="card-inner">
-          <img src="{{url}}" class="proimage">
+          <img src="{{img}}" class="proimage">
         </div>
       </div>
     </div>
   </script>
 
-
+  
+  <script type="text/javascript" src="../Models/productModel.js"></script>
+  <script type="text/javascript" src="../collections/productCollection.js"></script>
+  <script type="text/javascript" src="../Views/cardView.js"></script>
+  <script type="text/javascript" src="../Models/resultModel.js"></script>
+  <script type="text/javascript" src="../collections/resultCollection.js"></script>
+  <script type="text/javascript" src="../Models/itemListModel.js"></script>
+  <script type="text/javascript" src="../Views/itemListView.js"></script>
+  <script type="text/javascript" src="../Models/resultsModel.js"></script>
+  <script type="text/javascript" src="../Views/resultsView.js"></script>
   <script type="text/javascript" src="admin.js"></script>
   <!-- <script type="text/javascript" src="amazon.js"></script> -->
 </body>

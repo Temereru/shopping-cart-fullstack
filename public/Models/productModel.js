@@ -3,7 +3,14 @@ var ProductModel = Backbone.Model.extend({
   defaults: {
     name: "",
     price: 0,
-    url: ""
+    img: ""
+  },
+
+
+  parse: function(res){
+    res.id = res._id;
+
+    return res;
   }
 
 });
