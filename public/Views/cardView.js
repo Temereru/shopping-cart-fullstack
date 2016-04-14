@@ -1,4 +1,4 @@
-var ProductView = Backbone.View.extend({
+var CardView = Backbone.View.extend({
   template: $('#item-card'),
 
   events: {
@@ -14,10 +14,7 @@ var ProductView = Backbone.View.extend({
   //create the product card display from the template
   render: function() {
     var template = Handlebars.compile(this.template.html());
-
-    var modelJ = this.model.toJSON();
-    modelJ.cid = this.model.collection.get(this.model).cid;
-    this.$el.html(template(modelJ));
+    this.$el.html(template(this.model.toJSON()));
     return this;
   }
 });

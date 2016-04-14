@@ -5,8 +5,7 @@
     'click .submit-product': 'addProduct', 
     'click .add-to-cart': 'addToCart', 
     'click .clear-cart': 'clearCart', 
-    'click .view-cart': 'cartShow', 
-    'click .view-manager': 'managerShow' 
+    'click .view-cart': 'cartShow' 
   },
 
   initialize: function () {
@@ -18,6 +17,7 @@
 
     this.$products = this.$('.products');
     this.$cart = this.$('.cart-list');
+    this.model.get('products').fetch();
   },
 
   //used to create a new product model
@@ -27,7 +27,7 @@
     var product = new ProductModel( { 
       name: $('#product-name').val(),
       price: $('#product-price').val(),
-      url: $('#product-img').val()
+      img: $('#product-img').val()
     });
     var instant = this.model.get('products').where({name: product.attributes.name});
     if(instant.length === 0){
@@ -120,12 +120,6 @@
   cartShow: function(){
     $('.show').toggleClass('show');
     $('.shopping-cart').toggleClass('show');
-  },
-
-  //displays the add product form on navbar button click
-  managerShow: function(){
-    $('.show').toggleClass('show');
-    $('.create-item').toggleClass('show');
   },
 
   //used to validate the add product form, currently only checks that the fields aren't empty
