@@ -118,7 +118,6 @@
 
   //displays the shopping cart on navbar button click
   cartShow: function(){
-    $('.show').toggleClass('show');
     $('.shopping-cart').toggleClass('show');
   },
 

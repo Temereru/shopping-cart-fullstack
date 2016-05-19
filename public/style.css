@@ -149,3 +149,7 @@ body {
 .amountShow {
   display: inline;
 }
+
+.clickable {
+  cursor: pointer;
+}

@@ -14,7 +14,7 @@ var ResultsView = Backbone.View.extend ({
   renderList: function(){
     this.$el.find('#searchListContainer').find('ul').empty();
     this.model.get('results').each(function(element, index, list){
-      this.$el.find('#searchListContainer').find('ul').append('<li data-id="' + element.id + '">' + element.get('name') + '</li>');
+      this.$el.find('#searchListContainer').find('ul').append('<li data-id="' + element.id + '" class="clickable">' + element.get('name') + '</li>');
     }, this);
   },
 
